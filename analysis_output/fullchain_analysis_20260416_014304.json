@@ -1,0 +1,350 @@
+{
+  "project_name": "Demo Project",
+  "analysis_time": "2026-04-16T01:43:04.585675",
+  "backend_path": "/workspace/demo-backend",
+  "frontend_path": "/workspace/demo-frontend",
+  "data_source": {
+    "type": "mysql",
+    "url": "jdbc:mysql://localhost:3306/demo_db?useSSL=false&serverTimezone=UTC",
+    "username": "root",
+    "driver_class": "com.mysql.cj.jdbc.Driver"
+  },
+  "controllers": [
+    {
+      "class_name": "OrderController",
+      "package": "com.example.demo.controller",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/controller/OrderController.java",
+      "base_url": "/api/order",
+      "endpoints": [],
+      "dependencies": [
+        "OrderService"
+      ]
+    },
+    {
+      "class_name": "UserController",
+      "package": "com.example.demo.controller",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/controller/UserController.java",
+      "base_url": "/api/user",
+      "endpoints": [],
+      "dependencies": [
+        "UserService"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "class_name": "UserServiceImpl",
+      "package": "com.example.demo.service",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/service/UserServiceImpl.java",
+      "is_interface": false,
+      "methods": [
+        {
+          "modifier": "public",
+          "return_type": "User",
+          "name": "findById",
+          "params": "Long id",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "List<User>",
+          "name": "findAll",
+          "params": "",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "User",
+          "name": "create",
+          "params": "User user",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "User",
+          "name": "update",
+          "params": "User user",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "void",
+          "name": "delete",
+          "params": "Long id",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "User",
+          "name": "findByUsername",
+          "params": "String username",
+          "is_interface_method": false
+        }
+      ],
+      "dependencies": [
+        "UserMapper"
+      ]
+    },
+    {
+      "class_name": "OrderServiceImpl",
+      "package": "com.example.demo.service",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/service/OrderServiceImpl.java",
+      "is_interface": false,
+      "methods": [
+        {
+          "modifier": "public",
+          "return_type": "Order",
+          "name": "findById",
+          "params": "Long id",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "List<Order>",
+          "name": "findByUserId",
+          "params": "Long userId",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "List<Order>",
+          "name": "findAll",
+          "params": "",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "Order",
+          "name": "create",
+          "params": "Order order",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "Order",
+          "name": "update",
+          "params": "Order order",
+          "is_interface_method": false
+        },
+        {
+          "modifier": "public",
+          "return_type": "void",
+          "name": "delete",
+          "params": "Long id",
+          "is_interface_method": false
+        }
+      ],
+      "dependencies": [
+        "OrderMapper"
+      ]
+    }
+  ],
+  "mappers": [
+    {
+      "interface_name": "UserMapper",
+      "package": "com.example.demo.mapper",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/mapper/UserMapper.java",
+      "methods": [
+        {
+          "return_type": "List<User>",
+          "name": "findAll",
+          "params": ""
+        },
+        {
+          "return_type": "int",
+          "name": "insert",
+          "params": "User user"
+        },
+        {
+          "return_type": "int",
+          "name": "update",
+          "params": "User user"
+        }
+      ],
+      "sql_statements": [
+        {
+          "type": "SELECT",
+          "id": "findById",
+          "sql": "SELECT * FROM sys_user WHERE id = #{id}"
+        },
+        {
+          "type": "SELECT",
+          "id": "findAll",
+          "sql": "SELECT * FROM sys_user ORDER BY created_at DESC"
+        },
+        {
+          "type": "SELECT",
+          "id": "findByUsername",
+          "sql": "SELECT * FROM sys_user WHERE username = #{username}"
+        },
+        {
+          "type": "INSERT",
+          "id": "insert",
+          "sql": "INSERT INTO sys_user (username, email, password, created_at, updated_at)\n        VALUES (#{username}, #{email}, #{password}, NOW(), NOW())"
+        },
+        {
+          "type": "UPDATE",
+          "id": "update",
+          "sql": "UPDATE sys_user SET username=#{username}, email=#{email}, updated_at=NOW()\n        WHERE id=#{id}"
+        },
+        {
+          "type": "DELETE",
+          "id": "deleteById",
+          "sql": "DELETE FROM sys_user WHERE id = #{id}"
+        }
+      ],
+      "associated_entity": null
+    },
+    {
+      "interface_name": "OrderMapper",
+      "package": "com.example.demo.mapper",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/mapper/OrderMapper.java",
+      "methods": [
+        {
+          "return_type": "List<Order>",
+          "name": "findAll",
+          "params": ""
+        },
+        {
+          "return_type": "int",
+          "name": "insert",
+          "params": "Order order"
+        },
+        {
+          "return_type": "int",
+          "name": "update",
+          "params": "Order order"
+        }
+      ],
+      "sql_statements": [],
+      "associated_entity": null
+    }
+  ],
+  "entities": [
+    {
+      "class_name": "Order",
+      "package": "com.example.demo.entity",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/entity/Order.java",
+      "table_name": "sys_order",
+      "fields": [
+        {
+          "field_name": "orderNo",
+          "field_type": "String",
+          "column_name": "order_no"
+        },
+        {
+          "field_name": "userId",
+          "field_type": "Long",
+          "column_name": "user_id"
+        },
+        {
+          "field_name": "totalAmount",
+          "field_type": "Double",
+          "column_name": "total_amount"
+        },
+        {
+          "field_name": "status",
+          "field_type": "Integer",
+          "column_name": "status"
+        },
+        {
+          "field_name": "createdAt",
+          "field_type": "Date",
+          "column_name": "created_at"
+        }
+      ],
+      "relationships": []
+    },
+    {
+      "class_name": "User",
+      "package": "com.example.demo.entity",
+      "file_path": "/workspace/demo-backend/src/main/java/com/example/demo/entity/User.java",
+      "table_name": "sys_user",
+      "fields": [
+        {
+          "field_name": "username",
+          "field_type": "String",
+          "column_name": "username"
+        },
+        {
+          "field_name": "email",
+          "field_type": "String",
+          "column_name": "email"
+        },
+        {
+          "field_name": "password",
+          "field_type": "String",
+          "column_name": "password"
+        },
+        {
+          "field_name": "createdAt",
+          "field_type": "Date",
+          "column_name": "created_at"
+        },
+        {
+          "field_name": "updatedAt",
+          "field_type": "Date",
+          "column_name": "updated_at"
+        }
+      ],
+      "relationships": []
+    }
+  ],
+  "tables": [],
+  "vue_components": [
+    {
+      "component_name": "OrderList",
+      "file_path": "/workspace/demo-frontend/src/components/OrderList.vue",
+      "template_tags": [
+        "td",
+        "h2",
+        "th",
+        "button",
+        "div",
+        "tbody",
+        "tr",
+        "table",
+        "thead"
+      ],
+      "functions": [],
+      "api_imports": [
+        "../api/orderApi"
+      ],
+      "props": [],
+      "emits": []
+    },
+    {
+      "component_name": "UserList",
+      "file_path": "/workspace/demo-frontend/src/components/UserList.vue",
+      "template_tags": [
+        "td",
+        "h2",
+        "th",
+        "button",
+        "div",
+        "tbody",
+        "tr",
+        "table",
+        "thead"
+      ],
+      "functions": [],
+      "api_imports": [
+        "../api/userApi"
+      ],
+      "props": [],
+      "emits": []
+    }
+  ],
+  "full_chains": [],
+  "statistics": {
+    "controllers_count": 2,
+    "services_count": 2,
+    "mappers_count": 2,
+    "entities_count": 2,
+    "vue_components_count": 2,
+    "full_chains_count": 0,
+    "high_confidence_chains": 0,
+    "medium_confidence_chains": 0,
+    "low_confidence_chains": 0
+  }
+}

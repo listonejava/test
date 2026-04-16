@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <resultMap id="UserResult" type="com.example.demo.entity.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findById" resultMap="UserResult">
+        SELECT * FROM sys_user WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="UserResult">
+        SELECT * FROM sys_user ORDER BY created_at DESC
+    </select>
+
+    <insert id="insert" parameterType="com.example.demo.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user (username, email, password, created_at, updated_at)
+        VALUES (#{username}, #{email}, #{password}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.example.demo.entity.User">
+        UPDATE sys_user SET username=#{username}, email=#{email}, updated_at=NOW()
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM sys_user WHERE id = #{id}
+    </delete>
+
+    <select id="findByUsername" resultMap="UserResult">
+        SELECT * FROM sys_user WHERE username = #{username}
+    </select>
+
+</mapper>
