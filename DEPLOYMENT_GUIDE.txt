@@ -1,0 +1,94 @@
+========================================
+SpringBoot + Vue 全链路静态分析工具
+Windows 11 部署指南
+支持 Python 3.12 - 3.14
+========================================
+
+📁 文件清单:
+-------------
+1. fullchain_analyzer.py    - 主程序 (约 40KB, 1200 行)
+2. run_analysis.bat         - Windows 一键运行脚本
+3. README_WINDOWS.md        - 快速入门指南
+4. USER_GUIDE.md            - 详细用户手册
+
+📥 部署步骤:
+-------------
+步骤 1: 在 E 盘创建目录
+   mkdir E:\workspace-analysis\AI4DC\tools
+
+步骤 2: 复制文件
+   将以下 4 个文件复制到上述目录:
+   - fullchain_analyzer.py
+   - run_analysis.bat
+   - README_WINDOWS.md
+   - USER_GUIDE.md
+
+步骤 3: 验证 Python 环境
+   打开命令行，运行:
+   python --version
+   确保显示 Python 3.12.x 或 3.14.x
+
+步骤 4: 运行分析
+   方式 A - 使用批处理脚本 (推荐):
+      cd E:\workspace-analysis\AI4DC\tools
+      run_analysis.bat
+   
+   方式 B - 直接运行 Python:
+      python fullchain_analyzer.py ^
+        --backend "E:\workspace-analysis\AI4DC\05 源码\后端项目目录" ^
+        --frontend "E:\workspace-analysis\AI4DC\05 源码\前端项目目录" ^
+        --output "E:\workspace-analysis\AI4DC\analysis_output" ^
+        --format both ^
+        --project-name "数币工程"
+
+📊 输出文件:
+-------------
+分析完成后，在 E:\workspace-analysis\AI4DC\analysis_output\ 目录下生成:
+- fullchain_analysis_YYYYMMDD_HHMMSS.json  (结构化数据)
+- fullchain_analysis_YYYYMMDD_HHMMSS.md    (可读报告)
+
+🔍 分析内容:
+-------------
+✓ 后端 Controllers (API 端点)
+✓ 后端 Services (业务逻辑)
+✓ 后端 Mappers (数据访问)
+✓ 后端 Entities (实体类→数据库表)
+✓ 前端 Vue 组件
+✓ 前端 API 调用
+✓ 完整链路：Vue → API → Controller → Service → Mapper → Entity → Table
+✓ 数据源配置
+✓ 需求影响性分析指南
+
+💡 使用示例:
+-------------
+假设您的源码目录结构如下:
+E:\workspace-analysis\AI4DC\05 源码\
+  ├── digital-currency-backend\    (SpringBoot 项目)
+  └── digital-currency-frontend\   (Vue 项目)
+
+则运行命令为:
+python fullchain_analyzer.py ^
+  --backend "E:\workspace-analysis\AI4DC\05 源码\digital-currency-backend" ^
+  --frontend "E:\workspace-analysis\AI4DC\05 源码\digital-currency-frontend" ^
+  --output "E:\workspace-analysis\AI4DC\analysis_output" ^
+  --format both ^
+  --project-name "数币工程"
+
+⚠️ 注意事项:
+-------------
+1. 确保 Python 已添加到系统 PATH
+2. 如果源码路径包含空格，请用双引号包裹路径
+3. 首次运行可能需要几分钟分析时间
+4. 分析报告会覆盖同名旧文件
+
+📞 技术支持:
+-------------
+如遇问题，请检查:
+1. Python 版本是否 >= 3.12
+2. 源码路径是否正确
+3. 是否有读取权限
+4. 查看命令行输出的错误信息
+
+========================================
+文件内容将在后续消息中提供
+========================================

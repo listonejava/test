@@ -1,0 +1,123 @@
+{
+  "project_name": "测试项目",
+  "analysis_time": "2026-04-16 02:23:38",
+  "total_chains": 1,
+  "average_confidence": 100.0,
+  "business_chains": [
+    {
+      "business_function": "用户管理",
+      "front_end_request": {
+        "component": "UserList.vue",
+        "request_path": "/api/user/list",
+        "parameters": []
+      },
+      "back_end_api": {
+        "controller": "UserController.java",
+        "method": "getUsers()",
+        "dependencies": [
+          "id",
+          "user",
+          "userService"
+        ]
+      },
+      "services": [
+        {
+          "service": "UserService.java",
+          "methods": [
+            "findAll",
+            "save",
+            "deleteById"
+          ],
+          "dependencies": [
+            "id",
+            "user",
+            "userRepository"
+          ]
+        },
+        {
+          "service": "UserService.java",
+          "methods": [
+            "findAll",
+            "save",
+            "deleteById"
+          ],
+          "dependencies": [
+            "id",
+            "user",
+            "userRepository"
+          ]
+        }
+      ],
+      "storage_access": [
+        {
+          "repository": "UserRepository.java",
+          "database_table": "t_user",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "UserRepository.java",
+          "database_table": "",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "UserRepository.java",
+          "database_table": "t_user",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "UserRepository.java",
+          "database_table": "",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        }
+      ],
+      "code_quality": {
+        "sonarqube Issues": 15,
+        "code_smells": 8,
+        "bugs": 3,
+        "vulnerabilities": 4
+      },
+      "security_vulnerabilities": {
+        "semgrep Findings": 5,
+        "xss_vulnerabilities": 2,
+        "sql_injection": 1,
+        "other_vulnerabilities": 2
+      },
+      "performance_bottlenecks": {
+        "springStartupAnalyzer Findings": 3,
+        "slow Methods": 2,
+        "inefficient Data Access": 1
+      },
+      "受影响代码路径": [
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java -> t_user",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java -> t_user",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java -> t_user",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java -> t_user",
+        "UserList.vue -> UserController.java -> UserService.java -> UserRepository.java"
+      ],
+      "confidence": 100.0
+    }
+  ]
+}

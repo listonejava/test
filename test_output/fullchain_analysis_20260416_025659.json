@@ -1,0 +1,129 @@
+{
+  "project_name": "TestProject",
+  "analysis_time": "2026-04-16 02:56:59",
+  "total_chains": 1,
+  "average_confidence": 100.0,
+  "business_chains": [
+    {
+      "business_function": "用户管理",
+      "front_end_request": {
+        "component": "UserList.vue",
+        "request_path": "/api/user/list",
+        "parameters": []
+      },
+      "back_end_api": {
+        "controller": "src/main/java/com/example/controller/UserController.java",
+        "controller_class": "com.example.controller.UserController",
+        "method": "getUsers()",
+        "dependencies": [
+          "user",
+          "userService",
+          "id"
+        ]
+      },
+      "services": [
+        {
+          "service": "src/main/java/com/example/service/UserService.java",
+          "service_class": "com.example.service.UserService",
+          "methods": [
+            "findAll",
+            "save",
+            "deleteById"
+          ],
+          "dependencies": [
+            "id",
+            "user",
+            "userRepository"
+          ]
+        },
+        {
+          "service": "src/main/java/com/example/service/UserService.java",
+          "service_class": "com.example.service.UserService",
+          "methods": [
+            "findAll",
+            "save",
+            "deleteById"
+          ],
+          "dependencies": [
+            "id",
+            "user",
+            "userRepository"
+          ]
+        }
+      ],
+      "storage_access": [
+        {
+          "repository": "src/main/java/com/example/repository/UserRepository.java",
+          "repository_class": "com.example.repository.",
+          "database_table": "t_user",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "src/main/java/com/example/repository/UserRepository.java",
+          "repository_class": "com.example.repository.",
+          "database_table": "",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "src/main/java/com/example/repository/UserRepository.java",
+          "repository_class": "com.example.repository.",
+          "database_table": "t_user",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        },
+        {
+          "repository": "src/main/java/com/example/repository/UserRepository.java",
+          "repository_class": "com.example.repository.",
+          "database_table": "",
+          "operations": [
+            "SELECT",
+            "INSERT",
+            "UPDATE",
+            "DELETE"
+          ]
+        }
+      ],
+      "code_quality": {
+        "sonarqube Issues": 15,
+        "code_smells": 8,
+        "bugs": 3,
+        "vulnerabilities": 4
+      },
+      "security_vulnerabilities": {
+        "semgrep Findings": 5,
+        "xss_vulnerabilities": 2,
+        "sql_injection": 1,
+        "other_vulnerabilities": 2
+      },
+      "performance_bottlenecks": {
+        "springStartupAnalyzer Findings": 3,
+        "slow Methods": 2,
+        "inefficient Data Access": 1
+      },
+      "受影响代码路径": [
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java -> t_user",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java -> t_user",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java -> t_user",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java -> t_user",
+        "UserList.vue -> src/main/java/com/example/controller/UserController.java -> src/main/java/com/example/service/UserService.java -> src/main/java/com/example/repository/UserRepository.java"
+      ]
+    }
+  ]
+}
