@@ -137,10 +137,10 @@ class FullChainAnalyzer:
         logger.info(f"构建完成：{len(chains)} 条业务链路")
         return chains
 
-    def export_json(self, chains, output_file: str, project_name: str = DEFAULT_PROJECT_NAME):
+    def export_json(self, chains, output_file: str, project_name: str = DEFAULT_PROJECT_NAME, frontend_analysis: dict = None):
         """导出 JSON"""
         exporter = JsonExporter(project_name)
-        exporter.export(chains, output_file)
+        exporter.export(chains, output_file, frontend_analysis)
 
 
 def main():
@@ -166,7 +166,7 @@ def main():
     
     chains = analyzer.build_chains()
     
-    analyzer.export_json(chains, output_file, args.project_name)
+    analyzer.export_json(chains, output_file, args.project_name, frontend_analysis=None)
     
     print(f"\n✅ 分析完成!")
     print(f"📊 发现业务链路：{len(chains)} 条")

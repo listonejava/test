@@ -98,14 +98,17 @@ class VueParser:
                             path = path[8:]
                             
                         # 去除可能的前缀
+                        prefix_stripped = False
                         for prefix in API_PREFIXES_TO_STRIP:
                             if f'/{prefix}/' in path:
                                 path = path.split(f'/{prefix}', 1)[1]
+                                prefix_stripped = True
                                 break
-                        elif path.startswith('/dev-api'):
-                            path = path.split('/dev-api', 1)[1]
-                        elif path.startswith('/prod-api'):
-                            path = path.split('/prod-api', 1)[1]
+                        if not prefix_stripped:
+                            if path.startswith('/dev-api'):
+                                path = path.split('/dev-api', 1)[1]
+                            elif path.startswith('/prod-api'):
+                                path = path.split('/prod-api', 1)[1]
                             
                         params = []
                         if '?' in path:
